@@ -1,0 +1,868 @@
+:root {
+    --dark-bg: #0f0a1e;
+    --darker-bg: #080312;
+    --accent: #8a56ff;
+    --accent-light: #a278ff;
+    --accent-dark: #6843c9;
+    --text-primary: #ffffff;
+    --text-secondary: #d0c9e6;
+    --border-gradient: linear-gradient(145deg, #8a56ff, #bc4e9c);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--dark-bg);
+    color: var(--text-primary);
+    overflow-x: hidden;
+}
+
+/* Scroll Bar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--darker-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-dark);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+/* Header Section */
+header {
+    background: linear-gradient(to right, var(--darker-bg), var(--dark-bg));
+    padding: 1.5rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 3rem 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.header-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: var(--accent);
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: float 8s infinite ease-in-out;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) translateX(0);
+    }
+    50% {
+        transform: translateY(-20px) translateX(10px);
+    }
+}
+
+.profile-container {
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.profile-pic {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid transparent;
+    background: 
+        linear-gradient(var(--dark-bg), var(--dark-bg)) padding-box,
+        var(--border-gradient) border-box;
+    box-shadow: 0 10px 20px rgba(138, 86, 255, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.profile-pic:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(138, 86, 255, 0.3);
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to right, #8a56ff, #bc4e9c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+
+.subject-info {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    background: rgba(138, 86, 255, 0.1);
+    display: inline-block;
+}
+
+/* Certificate Showcase Section */
+.certificates-container {
+    width: 95%;
+    max-width: 1800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 3px;
+    background: var(--border-gradient);
+    border-radius: 2px;
+}
+
+/* Modified to ensure 2x5 layout with better space utilization */
+.certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.certificate-card {
+    position: relative;
+    background: linear-gradient(145deg, #1a1430, #12091f);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(138, 86, 255, 0.1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.certificate-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(138, 86, 255, 0.3);
+    border: 1px solid rgba(138, 86, 255, 0.3);
+}
+
+.certificate-card::before {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(138, 86, 255, 0) 0%,
+        rgba(138, 86, 255, 0.1) 50%,
+        rgba(138, 86, 255, 0) 100%
+    );
+    transform: rotate(-45deg);
+    transition: all 0.7s ease;
+    z-index: 1;
+}
+
+.certificate-card:hover::before {
+    animation: shine 1.5s forwards;
+}
+
+@keyframes shine {
+    0% {
+        top: -100%;
+        left: -100%;
+    }
+    100% {
+        top: 100%;
+        left: 100%;
+    }
+}
+
+.certificate-img-container {
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+}
+
+.certificate-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.4s ease;
+}
+
+.certificate-card:hover .certificate-img {
+    transform: scale(1.05);
+}
+
+.certificate-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    position: relative;
+    z-index: 2;
+}
+
+.certificate-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.7rem;
+    color: var(--accent-light);
+}
+
+.certificate-reflection {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+.view-certificate {
+    display: inline-block;
+    background: linear-gradient(to right, var(--accent-dark), var(--accent));
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(138, 86, 255, 0.3);
+    align-self: flex-start;
+}
+
+.view-certificate:hover {
+    background: linear-gradient(to right, var(--accent), var(--accent-light));
+    box-shadow: 0 6px 15px rgba(138, 86, 255, 0.4);
+    transform: translateY(-3px);
+}
+
+/* Certificate Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(8, 3, 18, 0.95);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    overflow-y: auto;
+}
+
+.modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background: linear-gradient(145deg, #1a1430, #12091f);
+    width: 90%;
+    max-width: 1000px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 15px;
+    padding: 2rem;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(138, 86, 255, 0.2);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+    margin: auto;
+}
+
+.modal.active .modal-content {
+    transform: scale(1);
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(138, 86, 255, 0.2);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.close-modal:hover {
+    background: var(--accent);
+    transform: rotate(90deg);
+}
+
+.modal-certificate-img {
+    width: 100%;
+    max-height: 60vh;
+    object-fit: contain;
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal-certificate-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--accent-light);
+    font-family: 'Playfair Display', serif;
+}
+
+.modal-certificate-reflection {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+/* Footer Section */
+footer {
+    padding: 2rem 0;
+    background: var(--darker-bg);
+    text-align: center;
+    margin-top: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.footer-text {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.copyright {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 992px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    .certificates-grid {
+        gap: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .certificates-grid {
+        gap: 1.2rem;
+    }
+    
+    .certificate-card {
+        border-radius: 12px;
+    }
+    
+    .certificate-img-container {
+        height: 180px;
+    }
+    
+    .certificate-title {
+        font-size: 1.2rem;
+    }
+    
+    .certificate-reflection {
+        font-size: 0.9rem;
+    }
+    
+    .modal-certificate-title {
+        font-size: 1.5rem;
+    }
+    
+    .modal-certificate-reflection {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .profile-pic {
+        width: 100px;
+        height: 100px;
+    }
+    
+    /* Change to single column on small screens */
+    .certificates-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .certificate-img-container {
+        height: 200px;
+    }
+    
+    .certificate-content {
+        padding: 1.2rem;
+    }
+    
+    .certificate-title {
+        font-size: 1.1rem;
+    }
+    
+    .view-certificate {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+    
+    .modal-content {
+        padding: 1.5rem;
+    }
+    
+    .modal-certificate-title {
+        font-size: 1.3rem;
+    }
+    
+    .close-modal {
+        width: 35px;
+        height: 35px;
+    }
+}
+/* Author's Note Section */
+.authors-note-section {
+    width: 95%;
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 1rem;
+    position: relative;
+}
+
+.authors-note-section::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -150px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(138, 86, 255, 0.1) 0%, rgba(138, 86, 255, 0) 70%);
+    border-radius: 50%;
+    z-index: -1;
+    animation: pulse 10s infinite alternate ease-in-out;
+}
+
+.authors-note-section::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: -150px;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(188, 78, 156, 0.1) 0%, rgba(188, 78, 156, 0) 70%);
+    border-radius: 50%;
+    z-index: -1;
+    animation: pulse 8s infinite alternate-reverse ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.3;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 0.7;
+        transform: scale(1.05);
+    }
+}
+
+.authors-note-container {
+    background: linear-gradient(145deg, rgba(26, 20, 48, 0.7), rgba(18, 9, 31, 0.9));
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(138, 86, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.authors-note-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(138, 86, 255, 0.2);
+    border: 1px solid rgba(138, 86, 255, 0.2);
+}
+
+/* Animated border effect */
+.authors-note-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 3px;
+    background: var(--border-gradient);
+    animation: border-flow 8s infinite linear;
+}
+
+@keyframes border-flow {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.authors-note-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    position: relative;
+}
+
+.authors-note-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    background: linear-gradient(to right, #8a56ff, #bc4e9c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.authors-note-divider {
+    height: 3px;
+    width: 100px;
+    margin: 0 auto;
+    background: var(--border-gradient);
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+}
+
+.authors-note-divider::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.8), transparent);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.authors-note-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+}
+
+.authors-note-icon {
+    color: var(--accent);
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.7;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.authors-note-container:hover .authors-note-icon {
+    transform: scale(1.1) rotate(-5deg);
+    opacity: 0.9;
+}
+
+.authors-note-text {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    position: relative;
+    text-align: justify;
+}
+
+/* Modified paragraph styling - removed bullet-like styling */
+.authors-note-text p {
+    margin-bottom: 1.2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    text-indent: 2em; /* Indents the first line of each paragraph */
+    padding-left: 0; /* Removed the padding that was creating space for bullets */
+    text-align: justify;
+}
+
+.authors-note-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* Removed the ::before pseudo-element that was creating the bullet effect */
+.authors-note-text p::before {
+    content: none; /* Remove the bullet */
+}
+
+.authors-note-text p:hover {
+    color: var(--text-primary);
+    transform: translateX(0); /* Removed the shifting effect on hover */
+}
+
+.authors-signature {
+    text-align: right;
+    font-family: 'Playfair Display', serif;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(138, 86, 255, 0.2);
+    position: relative;
+}
+
+.authors-signature::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    right: 0;
+    width: 30%;
+    height: 1px;
+    background: var(--accent);
+    transition: width 0.5s ease;
+}
+
+.authors-note-container:hover .authors-signature::before {
+    width: 100%;
+}
+
+.signature-date {
+    font-size: 0.9rem;
+    color: var(--accent-light);
+    margin-top: 0.3rem;
+    opacity: 0.8;
+}
+
+/* Floating particles in the background */
+.authors-note-container .particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: var(--accent);
+    border-radius: 50%;
+    opacity: 0;
+    z-index: -1;
+    animation: float-particle 12s infinite linear;
+}
+
+.authors-note-container:hover .particle {
+    opacity: 0.2;
+}
+
+@keyframes float-particle {
+    0% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.2;
+    }
+    90% {
+        opacity: 0.2;
+    }
+    100% {
+        transform: translateY(-100px) translateX(20px) scale(0);
+        opacity: 0;
+    }
+}
+
+/* Add interactive hover effect for the entire section */
+.authors-note-container .highlight-text {
+    position: relative;
+    display: inline-block;
+    color: var(--accent-light);
+    transition: all 0.3s ease;
+}
+
+.authors-note-container .highlight-text:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(138, 86, 255, 0.5);
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 992px) {
+    .authors-note-section {
+        margin: 3rem auto;
+    }
+    
+    .authors-note-container {
+        padding: 2.5rem;
+    }
+    
+    .authors-note-header h2 {
+        font-size: 2.2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .authors-note-container {
+        padding: 2rem;
+    }
+    
+    .authors-note-header h2 {
+        font-size: 2rem;
+    }
+    
+    .authors-note-text {
+        font-size: 1rem;
+    }
+    
+    .authors-signature {
+        font-size: 1.1rem;
+    }
+    
+    /* Maintain paragraph indentation in responsive view */
+    .authors-note-text p {
+        text-indent: 1.5em;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .authors-note-section {
+        margin: 2.5rem auto;
+    }
+    
+    .authors-note-container {
+        padding: 1.5rem;
+    }
+    
+    .authors-note-header h2 {
+        font-size: 1.7rem;
+    }
+    
+    .authors-note-icon {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .authors-note-text {
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+    
+    /* Slightly smaller indentation on mobile */
+    .authors-note-text p {
+        text-indent: 1em;
+    }
+    
+    .authors-signature {
+        font-size: 1rem;
+    }
+    
+    .signature-date {
+        font-size: 0.8rem;
+    }
+}
+
+/* JavaScript-enabled interactive elements (to be added dynamically) */
+.authors-note-container .particle-1 { top: 10%; left: 20%; animation-delay: 0s; }
+.authors-note-container .particle-2 { top: 70%; left: 80%; animation-delay: 2s; }
+.authors-note-container .particle-3 { top: 40%; left: 10%; animation-delay: 4s; }
+.authors-note-container .particle-4 { top: 20%; left: 70%; animation-delay: 6s; }
+.authors-note-container .particle-5 { top: 80%; left: 30%; animation-delay: 8s; }
+.authors-note-container .particle-6 { top: 30%; left: 90%; animation-delay: 10s; }
